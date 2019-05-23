@@ -11,47 +11,60 @@ app.engine("handlebars", exphbs());
 app.set("view engine", "handlebars");
 
 var visitas = {
-    general:[],
-    registro:[]
+  general: [],
+  registro: []
 };
 
-
 fs.readFile(__dirname + "/registro.txt", (err, data) => {
-    if (err){
-        console.log("No se encontro el archivo");
-    }else{
-      visitas = JSON.parse(data);
-      console.log("Encontro el archivo");
-    }
-
+  if (err) {
+    console.log("No se encontro el archivo");
+  } else {
+    visitas = JSON.parse(data);
+    console.log("Encontro el archivo");
+  }
 });
 
 function registrarVisita(url) {
-  if (visitas.general.length  > 0) {
+  let f = new Date();
+  if (visitas.general.length > 0) {
     let encontro = false;
-   
+
     visitas.general.forEach((v, index) => {
-    
       if (v.url == url) {
         v.visitas++;
         let visi = v.visitas;
         encontro = true;
 
-        visitas.registro.push({
+        let informacion = {
           url: url,
           visitas: visi,
-          fecha: new Date()
-        });
+          fecha: f.getDate() + "/" + f.getMonth() + "/" + f.getFullYear(),
+          hora: f.getHours() + ":" + f.getMinutes()
+        };
+
+        visitas.registro.push(informacion);
       }
     });
 
     if (encontro == false) {
-      visitas.general.push({ url: url, visitas: 1, fecha: new Date() });
-      visitas.registro.push({ url: url, visitas: 1, fecha: new Date() });
+      let informacion = {
+        url: url,
+        visitas: 1,
+        fecha: f.getDate() + "/" + f.getMonth() + "/" + f.getFullYear(),
+        hora: f.getHours() + ":" + f.getMinutes()
+      };
+      visitas.general.push(informacion);
+      visitas.registro.push(informacion);
     }
   } else {
-    visitas.general.push({ url: url, visitas: 1, fecha: new Date() });
-    visitas.registro.push({ url: url, visitas: 1, fecha: new Date() });
+    let informacion = {
+      url: url,
+      visitas: 1,
+      fecha: f.getDate() + "/" + f.getMonth() + "/" + f.getFullYear(),
+      hora: f.getHours() + ":" + f.getMinutes()
+    };
+    visitas.general.push(informacion);
+    visitas.registro.push(informacion);
   }
   fs.writeFile("registro.txt", JSON.stringify(visitas), "utf8", function() {});
 }
@@ -75,7 +88,7 @@ app.get("/contacto", function(request, response) {
 });
 
 app.get("/admin", function(request, response) {
-  let contexto = { layout: false, visitas:visitas  };
+  let contexto = { layout: false, visitas: visitas };
   response.render("admin", contexto);
 });
 
