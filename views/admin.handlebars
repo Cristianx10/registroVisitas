@@ -1,14 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Administrador</title>
 </head>
+
 <body>
 
     <h1>Informacion del usuario</h1>
-    
+
+    <h2>General:</h2>
+    <ul>
+        {{#each general}}
+        <li>
+            <div>Nombre: {{url}}</div>
+            <div>Visitas: {{visitas}}</div>
+            <div>Fecha: {{fecha}}</div>
+        </li>
+        {{/each}}
+    </ul>
+
+    <br>
+    <h2>Registro:</h2>
+    <ul>
+        {{#each registro}}
+        <li>
+            <div>Nombre: {{url}}</div>
+            <div>Visitas: {{visitas}}</div>
+            <div>Fecha: {{fecha}}</div>
+        </li>
+        {{/each}}
+    </ul>
+
+
 </body>
+
 </html>

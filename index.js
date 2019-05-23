@@ -10,26 +10,34 @@ app.use(express.static("public"));
 app.engine("handlebars", exphbs());
 app.set("view engine", "handlebars");
 
-var visitas = {};
-visitas.general = [];
-visitas.registro = [];
-/*
+var visitas = {
+    general:[],
+    registro:[]
+};
+
+
 fs.readFile(__dirname + "/registro.txt", (err, data) => {
-  if (err) throw err;
-  visitas = JSON.parse(data);
-});*/
+    if (err){
+        console.log("No se encontro el archivo");
+    }else{
+      visitas = JSON.parse(data);
+      console.log("Encontro el archivo");
+    }
+
+});
 
 function registrarVisita(url) {
-  if (this.visitas.general.lenght > 0) {
+  if (visitas.general.lenght > 0) {
     let encontro = false;
     visitas.general.forEach((v, index) => {
       if (v.url == url) {
         v.visitas++;
-        let visitas = v.visitas;
+        let visi = v.visitas;
         encontro = true;
+
         visitas.registro.push({
           url: url,
-          visitas: visitas,
+          visitas: visi,
           fecha: new Date()
         });
       }
@@ -47,16 +55,19 @@ function registrarVisita(url) {
 
 app.get("/", function(request, response) {
   let contexto = { layout: false };
+  registrarVisita("inicio");
   response.render("inicio", contexto);
 });
 
 app.get("/nosotros", function(request, response) {
   let contexto = { layout: false };
+  registrarVisita("nosotros");
   response.render("nosotros", contexto);
 });
 
 app.get("/contacto", function(request, response) {
   let contexto = { layout: false };
+  registrarVisita("contacto");
   response.render("contacto", contexto);
 });
 
