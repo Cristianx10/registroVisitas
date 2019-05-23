@@ -13,30 +13,29 @@
     <h1>Informacion del usuario</h1>
 
     <h2>General:</h2>
-    <ul>
+    <table>
         {{#each visitas.general}}
-        <li>
-            <div>Nombre: {{url}}</div>
-            <div>Visitas: {{visitas}}</div>
-            <div>Fecha: {{fecha}}</div>
-            <div>Hora: {{hora}}</div>
-        </li>
-        {{/each}}
-    </ul>
+        <tr>
+            <td>Nombre: {{url}}</td>
+            <td>Visitas: {{visitas}}</td>
+            <td>Fecha: {{fecha}}</td>
+            <td>Hora: {{hora}}</td>
+        </tr>
+         {{/each}}
+    </table>
 
     <br>
     <h2>Registro:</h2>
-    <ul>
+    <table>
         {{#each visitas.registro}}
-        <li>
-            <div>Nombre: {{url}}</div>
-            <div>Visitas: {{visitas}}</div>
-            <div>Fecha: {{fecha}}</div>
-            <div>Hora: {{hora}}</div>
-        </li>
-        {{/each}}
-    </ul>
-
+        <tr>
+            <td>Nombre: {{url}}</td>
+            <td>Visitas: {{visitas}}</td>
+            <td>Fecha: {{fecha}}</td>
+            <td>Hora: {{hora}}</td>
+        </tr>
+         {{/each}}
+    </table>
 
 </body>
 
