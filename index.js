@@ -16,6 +16,16 @@ app.get('/', function (request, response) {
     response.render('inicio', contexto);
 });
 
+app.get('/nosotros', function (request, response) {
+    let contexto = {layout:false};
+    response.render('nosotros', contexto);
+});
+
+app.get('/contacto', function (request, response) {
+    let contexto = {layout:false};
+    response.render('contacto', contexto);
+});
+
 app.listen(3000, function () {
   console.log('Escuchando el puerto 3000!');
 });
