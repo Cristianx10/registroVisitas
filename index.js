@@ -10,6 +10,7 @@ app.use(express.static('public'));
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
+var visitas = [];
 
 app.get('/', function (request, response) {
     let contexto = {layout:false};
@@ -24,6 +25,11 @@ app.get('/nosotros', function (request, response) {
 app.get('/contacto', function (request, response) {
     let contexto = {layout:false};
     response.render('contacto', contexto);
+});
+
+app.get('/admin', function (request, response) {
+    let contexto = {layout:false};
+    response.render('admin', contexto);
 });
 
 app.listen(3000, function () {
