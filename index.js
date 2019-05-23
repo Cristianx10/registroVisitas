@@ -27,9 +27,11 @@ fs.readFile(__dirname + "/registro.txt", (err, data) => {
 });
 
 function registrarVisita(url) {
-  if (visitas.general.lenght > 0) {
+  if (visitas.general.length  > 0) {
     let encontro = false;
+   
     visitas.general.forEach((v, index) => {
+    
       if (v.url == url) {
         v.visitas++;
         let visi = v.visitas;
@@ -42,6 +44,7 @@ function registrarVisita(url) {
         });
       }
     });
+
     if (encontro == false) {
       visitas.general.push({ url: url, visitas: 1, fecha: new Date() });
       visitas.registro.push({ url: url, visitas: 1, fecha: new Date() });
@@ -72,7 +75,7 @@ app.get("/contacto", function(request, response) {
 });
 
 app.get("/admin", function(request, response) {
-  let contexto = { layout: false };
+  let contexto = { layout: false, visitas:visitas  };
   response.render("admin", contexto);
 });
 

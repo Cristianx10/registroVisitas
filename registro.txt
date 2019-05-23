@@ -1,1 +1,0 @@
-{"general":[{"url":"inicio","visitas":1,"fecha":"2019-05-23T21:45:43.170Z"}],"registro":[{"url":"inicio","visitas":1,"fecha":"2019-05-23T21:45:43.170Z"}]}
