@@ -1,6 +1,11 @@
 var express = require('express');
 var app = express();
 
+app.use(express.static('public'));
+
+app.engine('handlebars', exphbs());
+app.set('view engine', 'handlebars');
+
 app.get('/', function (req, res) {
   res.send('Hello World!');
 });
