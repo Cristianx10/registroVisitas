@@ -25,14 +25,16 @@ fs.readFile(__dirname + "/registro.txt", (err, data) => {
 });
 
 function registrarVisita(url) {
+url = url.charAt(0).toUpperCase() + url.slice(1);
   let f = new Date();
+
   if (visitas.general.length > 0) {
     let encontro = false;
 
     visitas.general.forEach((v, index) => {
       if (v.url == url) {
         v.visitas++;
-        let visi = v.visitas;
+        let visi = v.visitas*1 + 0;
         encontro = true;
 
         let informacion = {
@@ -43,29 +45,43 @@ function registrarVisita(url) {
         };
 
         visitas.registro.push(informacion);
-      }
+       
+      } 
     });
 
+
     if (encontro == false) {
-      let informacion = {
+  
+      visitas.general.push({
         url: url,
         visitas: 1,
         fecha: f.getDate() + "/" + f.getMonth() + "/" + f.getFullYear(),
         hora: f.getHours() + ":" + f.getMinutes()
-      };
-      visitas.general.push(informacion);
-      visitas.registro.push(informacion);
+      });
+      visitas.registro.push({
+        url: url,
+        visitas: 1,
+        fecha: f.getDate() + "/" + f.getMonth() + "/" + f.getFullYear(),
+        hora: f.getHours() + ":" + f.getMinutes()
+      });
     }
+
   } else {
-    let informacion = {
-      url: url,
-      visitas: 1,
-      fecha: f.getDate() + "/" + f.getMonth() + "/" + f.getFullYear(),
-      hora: f.getHours() + ":" + f.getMinutes()
-    };
-    visitas.general.push(informacion);
-    visitas.registro.push(informacion);
+   
+    visitas.general.push({
+        url: url,
+        visitas: 1,
+        fecha: f.getDate() + "/" + f.getMonth() + "/" + f.getFullYear(),
+        hora: f.getHours() + ":" + f.getMinutes()
+      });
+    visitas.registro.push({
+        url: url,
+        visitas: 1,
+        fecha: f.getDate() + "/" + f.getMonth() + "/" + f.getFullYear(),
+        hora: f.getHours() + ":" + f.getMinutes()
+      });
   }
+
   fs.writeFile("registro.txt", JSON.stringify(visitas), "utf8", function() {});
 }
 
@@ -89,6 +105,7 @@ app.get("/contacto", function(request, response) {
 
 app.get("/admin", function(request, response) {
   let contexto = { layout: false, visitas: visitas };
+  registrarVisita("Administrador");
   response.render("admin", contexto);
 });
 

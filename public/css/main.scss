@@ -1,7 +1,166 @@
-.general{
-    
+* {
+    font-family: 'Rajdhani', sans-serif;
 }
 
-.registro{
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
 
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+table {
+    border-spacing: 0;
+
+    tr:first-child {
+        background: #343A40;
+        color: white;
+        text-align: center;
+    }
+
+    tr {
+        height: 40px;
+    }
+
+    td {
+        width: 120px;
+        margin: 0;
+        text-align: center;
+        // border: 1px solid black;
+    }
+}
+
+.general {}
+
+.registro {}
+
+.cabecera {
+    width: 100%;
+    background: #4D4D4D;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 150px;
+    ;
+
+    &>div {
+        height: 100%;
+    }
+
+    &__navegacion {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.navegacion {
+    display: flex;
+    height: 100%;
+
+    ul {
+        display: flex;
+        padding: 0;
+        margin: 0;
+
+        li {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            list-style: none;
+            padding: 0 20px;
+            transition: all .5s ease;
+
+            a {
+                color: white;
+                font-size: 2em;
+                text-decoration: none;
+            }
+
+            &:hover {
+                cursor: pointer;
+                background: lightcoral;
+            }
+        }
+
+    }
+}
+
+.presentacion {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    &__previa {
+        width: 300px;
+        height: 400px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+
+
+        img {
+            width: 100%;
+            height: 100%;
+            transition: all .5s ease;
+        }
+
+        &:hover {
+
+            img{
+                width: 80%;
+                height: 80%;
+            }
+
+            div{
+            
+                opacity: 1;
+            }
+
+        }
+
+        &__informacion {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            left: 0;
+            height: 0;
+            background: rgba(0, 0, 0, 0.432);
+            color: white;
+            font-size: 3em;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+        }
+    }
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    background: #1E1E1E;
+    min-height: 100px;
+
+    .derechos {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        h2 {
+
+            color: white;
+        }
+    }
 }
