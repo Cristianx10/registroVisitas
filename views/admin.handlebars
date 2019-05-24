@@ -5,50 +5,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Administrador</title>
+    <title>Inicio</title>
     <link rel="stylesheet" href="/css/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Rajdhani&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-    <h1>Informacion del usuario</h1>
+    <header class="cabecera">
+        <div class="cabecera__logo">
+            <img src="/img/logo.png" alt="">
+        </div>
 
-    <h2>General:</h2>
-    <table class="general">
-        <tr>
-            <td>Nombre</td>
-            <td>Visitas</td>
-            <td>Ultima entrada</td>
-            <td>Hora</td>
-        </tr>
-        {{#each visitas.general}}
-        <tr>
-            <td>{{url}}</td>
-            <td>{{visitas}}</td>
-            <td>{{fecha}}</td>
-            <td>{{hora}}</td>
-        </tr>
-         {{/each}}
-    </table>
+        <div class="cabecera__navegacion">
+            <nav class="navegacion">
+                <ul>
+                    <li><a href="/">Inicio</a></li>
+                    <li><a href="/nosotros">Nosotros</a></li>
+                    <li><a href="/contacto">Contacto</a></li>
+                    <li><a href="/admin">Adminitrador</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-    <br>
-    <h2>Registro:</h2>
-    <table class="registro">
-        <tr>
-            <td>Nombre</td>
-            <td>Visitas</td>
-            <td>Ultima entrada</td>
-            <td>Hora</td>
-        </tr>
-        {{#each visitas.registro}}
-        <tr>
-            <td>{{url}}</td>
-            <td>{{visitas}}</td>
-            <td>{{fecha}}</td>
-            <td>{{hora}}</td>
-        </tr>
-         {{/each}}
-    </table>
+
+    <div class="contenido">
+
+        <h1>Informacion del usuario</h1>
+
+        <h2>General:</h2>
+        <table class="general">
+            <tr>
+                <td>Nombre</td>
+                <td>Visitas</td>
+                <td>Ultima entrada</td>
+                <td>Hora</td>
+            </tr>
+            {{#each visitas.general}}
+            <tr>
+                <td>{{url}}</td>
+                <td>{{visitas}}</td>
+                <td>{{fecha}}</td>
+                <td>{{hora}}</td>
+            </tr>
+            {{/each}}
+        </table>
+
+
+        <h2>Registro:</h2>
+        <table class="registro">
+            <tr>
+                <td>Nombre</td>
+                <td>Visitas</td>
+                <td>Ultima entrada</td>
+                <td>Hora</td>
+            </tr>
+            <div>
+                {{#each visitas.registro}}
+                <tr>
+                    <td>{{url}}</td>
+                    <td>{{visitas}}</td>
+                    <td>{{fecha}}</td>
+                    <td>{{hora}}</td>
+                </tr>
+                {{/each}}
+            </div>
+
+        </table>
+
+    </div>
+
+
+    <footer>
+        <div class="derechos">
+            <h2>Todos los derechos reservados - 2019</h2>
+
+        </div>
+    </footer>
+
 
 </body>
 

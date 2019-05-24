@@ -105,7 +105,6 @@ app.get("/contacto", function(request, response) {
 
 app.get("/admin", function(request, response) {
   let contexto = { layout: false, visitas: visitas };
-  registrarVisita("Administrador");
   response.render("admin", contexto);
 });
 
